@@ -1,0 +1,29 @@
+{% extends "learning_logs\base.html" %}
+
+{% block content %}
+<a href="{% url 'users:logout' %}">Log Out</a>
+<div class="topics">
+<p> Topic: {{ topic }}</p> 
+
+{% for entry in entries %}
+
+  <p>{{ entry.text|linebreaks }}
+    <p>
+      <p><h6>{{ entry.date_added|date:'M d, Y H:i' }}</h6></p>
+     <button>
+      <a href="{% url 'learning_logs:edit_entry' entry.id %}">edit entry</a>
+     </button>
+     <button>
+       <a href="{% url 'learning_logs:delete_entry' entry.id %}">delete entry</a>
+     </button> 
+      </p>
+
+
+{% empty %}
+no entries yet
+{% endfor %}
+<a href="{% url 'learning_logs:new_entry' topic.id %}">add new entry</a>
+</div>
+
+
+{% endblock content %}

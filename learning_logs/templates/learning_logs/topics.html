@@ -1,0 +1,27 @@
+{% extends "learning_logs\base.html" %}
+
+{% block content %}
+
+
+
+<div class="all_topics">
+  {% for topic in topics %}
+    <div>
+      <div class="Topic"><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a> </div>
+      <div class="delete"><a href="{% url 'learning_logs:delete_topic' topic.id %}">delete</a></div>
+    </div>
+  
+    {% empty %}
+    <p>
+        no topic yet
+    </p>
+  {% endfor %}
+  <div class="prompt-to-add">
+
+    <a href="{% url 'learning_logs:new_topic' %}">Add Topic</a>
+    
+    </div>
+</div>
+
+
+{% endblock content %}

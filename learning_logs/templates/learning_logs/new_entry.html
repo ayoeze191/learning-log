@@ -1,0 +1,13 @@
+{% extends "learning_logs\base.html" %}
+
+{% block content %}
+<a href="{% url 'users:logout' %}">Log Out</a>
+{{ topic }}
+<form action= "{% url 'learning_logs:new_entry' topic.id %}"  method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="add">
+</form>
+
+
+{% endblock content %} 

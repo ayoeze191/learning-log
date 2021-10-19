@@ -1,0 +1,27 @@
+{% extends "learning_logs\base.html" %}
+
+{% block content %}
+<div class="login-page">
+<form action="{% url 'users:login' %}" method="POST" class="login-form">
+    {% csrf_token %}
+    <h2>
+        Login
+    </h2>
+    
+    <div>
+        <input type="username" name="username" placeholder="username">
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="password">
+    </div>
+    <div class="login-btn"><button  type="submit">login</button></div>
+
+       <div  class = "regacct">don't have an acoount yets? register<button><a href="{% url 'users:register' %}">register</a> </button></span></div> 
+        
+    
+    
+</form>
+</div>
+
+
+{% endblock content %}
